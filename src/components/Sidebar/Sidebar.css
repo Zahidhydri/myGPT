@@ -151,7 +151,7 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 100px) {
     .sidebar {
         width: 100%; /* Full width on smaller screens */
         min-height: auto;
