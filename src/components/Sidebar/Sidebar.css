@@ -1,74 +1,247 @@
 .sidebar {
-    min-height: 100vh;
-    display: flex;
+    min-height: 100vh; /* Ensure it takes full height of its parent */
+    display: flex; /* Use flex column */
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
-    padding: 25px 15px;
+    padding: 25px 15px; /* Adjusted padding */
+    background: linear-gradient(180deg, #4285F4 0%, #673AB7 100%); /* Blue to Purple Gradient */
+    color: #ffffff; /* White text for contrast on dark background */
+    font-family: 'Roboto', sans-serif;
+    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out; /* Smooth transition for width and padding */
+    width: 80px; /* Collapsed state width */
+    overflow: hidden; /* Hide overflowing content when collapsed */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2); /* Deeper shadow for prominence */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
 }
 
-.sidebar img {
-    width: 20px;
+/* Extended state for the sidebar */
+.sidebar.extended {
+    width: 250px; /* Expanded state width */
+    padding: 25px 20px; /* Adjust padding for extended state */
+}
+
+
+/* Top Section Styling */
+.sidebar .top {
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar .menu {
-    display: block;
-    margin-left: 10px;
+    width: 25px; /* Icon size */
+    margin-bottom: 30px;
     cursor: pointer;
+    filter: invert(100%); /* Make icon white */
+    transition: transform 0.2s ease-in-out;
+}
+
+.sidebar .menu:hover {
+    transform: scale(1.1);
 }
 
 .sidebar .new-chat {
-    margin-top: 50px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    background-color: #e6eaf1;
-    border-radius: 50px;
-    font-size: 14px;
-    color: gray;
+    gap: 12px; /* Space between icon and text */
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white background */
+    border-radius: 25px; /* More rounded pill shape */
+    font-size: 16px;
+    color: #ffffff;
     cursor: pointer;
+    margin-bottom: 30px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+.sidebar .new-chat img {
+    width: 20px;
+    filter: invert(100%); /* Make plus icon white */
+}
+
+.sidebar .new-chat p {
+    margin: 0; /* Remove default paragraph margin */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.sidebar .new-chat:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Recent Prompts Section */
 .sidebar .recent {
     display: flex;
     flex-direction: column;
-    animation: fadeIn 1.5s;
 }
 
 .sidebar .recent-title {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    padding-left: 5px; /* Align with recent entries */
+    white-space: nowrap;
 }
 
 .sidebar .recent-entry {
     display: flex;
-    align-items: start;
-    gap: 10px;
-    padding: 10px;
-    padding-right: 40px;
-    border-radius: 50px;
-    color: #282828;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 8px; /* Slightly rounded corners */
+    color: #ffffff;
     cursor: pointer;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.sidebar .recent-entry img {
+    width: 20px;
+    filter: invert(100%); /* Make icons white */
+}
+
+.sidebar .recent-entry p {
+    margin: 0;
+    white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .sidebar .recent-entry:hover {
-    background-color: #e2e6eb;
-    
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }
 
+
+/* Bottom Section Styling */
 .sidebar .bottom {
-    display: flex;
-    flex-direction: column;
+    margin-top: auto; /* Pushes bottom items to the bottom */
 }
 
 .sidebar .bottom-item {
-    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #ffffff;
     cursor: pointer;
+    margin-bottom: 8px; /* Space between bottom items */
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-@media (max-width:600px) {
+.sidebar .bottom-item img {
+    width: 20px;
+    filter: invert(100%); /* Make icons white */
+}
+
+.sidebar .bottom-item p {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sidebar .bottom-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
     .sidebar {
+        width: 100%; /* Full width on smaller screens */
+        min-height: auto;
+        height: 60px; /* Fixed height for top bar */
+        padding: 15px 10px;
+        flex-direction: row; /* Layout items horizontally */
+        justify-content: flex-start; /* Align items to start */
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for top bar effect */
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow: visible; /* Allow content to overflow if needed for extended state */
+        position: sticky; /* Keep it at the top */
+        top: 0;
+        z-index: 100; /* Ensure it's above other content */
+    }
+
+    .sidebar.extended {
+        width: 100%; /* No specific extended width, as it's full width */
+        height: auto; /* Allow height to expand for content */
+        flex-direction: column; /* Back to column for extended content */
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+
+    .sidebar .top {
+        flex-direction: row; /* Horizontal for top section items */
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 0;
+        width: 100%; /* Ensure it spans full width */
+        justify-content: flex-start;
+    }
+
+    .sidebar .menu {
+        margin-bottom: 0; /* No bottom margin */
+    }
+
+    .sidebar .new-chat {
+        margin-bottom: 0; /* No bottom margin */
+        padding: 10px 12px; /* Slightly less padding */
+    }
+
+    .sidebar .new-chat p {
+        display: none; /* Hide "New Chat" text on mobile when collapsed */
+    }
+
+    .sidebar.extended .new-chat p {
+        display: block; /* Show "New Chat" text when extended */
+    }
+
+    /* Hide recent and bottom items by default on small screens when collapsed */
+    .sidebar .recent,
+    .sidebar .bottom {
         display: none;
+    }
+
+    /* When extended, show these items as a column */
+    .sidebar.extended .recent,
+    .sidebar.extended .bottom {
+        display: flex;
+        flex-direction: column; /* Stack vertically */
+        width: 100%; /* Take full width */
+        padding-top: 15px; /* Space from top controls */
+        margin-top: 0; /* Override auto margin */
+    }
+
+    /* Adjust specific text/icon sizes for smaller screens if needed */
+    .sidebar .recent-title,
+    .sidebar .recent-entry p,
+    .sidebar .bottom-item p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar .top {
+        gap: 15px;
+    }
+    .sidebar .menu {
+        width: 22px;
+    }
+    .sidebar .new-chat {
+        padding: 8px 10px;
+    }
+    .sidebar .new-chat img {
+        width: 18px;
+    }
+    .sidebar.extended .recent-entry,
+    .sidebar.extended .bottom-item {
+        padding: 8px 10px;
     }
 }

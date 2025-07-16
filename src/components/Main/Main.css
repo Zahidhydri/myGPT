@@ -1,84 +1,241 @@
-.main {
-    flex: 1;
-    min-height: 100vh;
-    padding-bottom: 15vh;
-    position: relative;
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Soft, engaging gradient background for the overall page */
+    background: linear-gradient(to right bottom, #e3f2fd, #e0effc);
+    color: #2c3e50; /* Darker text for contrast */
 }
 
-.main .nav {
+.main {
+    flex: 1; /* Allows it to take remaining width if sidebar is present */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    background-color: #f8faff; /* Slightly off-white for main content area to sit on top of body gradient */
+}
+
+/* Navigation Bar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 22px;
+    font-weight: 600;
+    /* Vibrant gradient for "Gemini" text */
+    background: -webkit-linear-gradient(90deg, #4CAF50, #2196F3); /* Green to Blue */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+}
+
+.nav p {
+    margin: 0; /* Remove default margin for text */
+}
+
+.nav img { /* Targeting the user_icon */
+    width: 45px; /* Slightly larger */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 3px #2196F3; /* A colorful blue border around the user icon */
+}
+
+.nav img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px #FFC107; /* Change border color to orange on hover */
+}
+
+/* Main Container */
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px; /* Increased horizontal padding */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Greeting Section */
+.greet {
+    margin: 60px 0 40px; /* More vertical space */
+    font-size: 55px; /* Larger font */
+    color: #3f51b5; /* A deep blue for general greeting text */
+    font-weight: 500;
+    padding: 0 10px;
+}
+
+.greet span {
+    /* Warm gradient for "Dev" */
+    background: -webkit-linear-gradient(16deg, #FF5722, #FFC107); /* Orange to Yellow */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700; /* Make it bolder */
+}
+
+/* Cards Section */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly wider cards */
+    gap: 20px; /* More space between cards */
+    padding: 0 10px;
+    margin-bottom: 50px;
+}
+
+.card {
+    padding: 20px; /* More padding inside cards */
+    background-color: #ffffff;
+    border-radius: 15px; /* More rounded corners */
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    min-height: 140px; /* Taller cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* More prominent shadow */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.card:hover {
+    /* Light blue gradient on hover */
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12); /* Stronger shadow on hover */
+}
+
+.card img {
+    width: 35px; /* Larger icons */
+    padding: 8px; /* More padding */
+    position: absolute;
+    /* Light blue background for icons */
+    background-color: #e0f2f7;
+    border-radius: 50%;
+    bottom: 15px; /* Slightly higher */
+    right: 15px; /* Slightly inwards */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.card:hover img {
+    background-color: #90CAF9; /* Change icon background to a darker blue on card hover */
+}
+
+.card p {
+    color: #455a64; /* Darker, more serious text */
+    font-size: 16px; /* Standard font size */
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Result Display */
+.result {
+    padding: 0 10px;
+    animation: fadeIn 1s ease-in-out;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 280px); /* Adjusted for larger header/footer, ensures scrollability */
+    padding-right: 10px; /* Ensure space for scrollbar */
+}
+
+.result-title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-size: 22px;
-    font-weight: 400;
-    padding: 20px;
-    color: #585858;
+    gap: 15px;
+    margin: 40px 0;
 }
 
-.main .nav img {
+.result-title img {
     width: 40px;
     border-radius: 50%;
 }
 
-.main-container {
-    max-width: 900px;
-    margin: auto;
+.result-title p {
+    font-size: 19px; /* Slightly larger */
+    font-weight: 600;
+    color: #333;
 }
 
-.main .greet {
-    margin: 17px 0px;
-    font-size: 56px;
-    color: #c4c7c5;
-    font-weight: 500;
-    padding: 20px;
-}
-
-.main .greet span {
-    background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.main .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+.result-data {
+    display: flex;
+    align-items: flex-start;
     gap: 15px;
-    padding: 20px;
+    margin-bottom: 50px;
+    line-height: 1.8;
 }
 
-.main .card {
-    height: 200PX;
-    padding: 15px;
-    background-color: #f0f4f9;
-    position: relative;
-    cursor: pointer;
+.result-data img {
+    width: 38px; /* Slightly larger Gemini icon */
+    margin-top: 5px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
-.main .card img {
-    width: 35px;
-    padding: 5px;
-    position: absolute;
-    background-color: white;
-    border-radius: 20px;
-    bottom: 10px;
-    right: 10px;
-}
-.main .card p {
-    color: #585858;
+.result-data p {
     font-size: 17px;
+    color: #555; /* Softer text color for results */
 }
 
-.main .card:hover {
-    background-color: #dfe4ea;
+.result-data p b {
+    font-weight: 700; /* Bolder bold text */
+    color: #333;
 }
 
+.result-data p ul, .result-data p ol {
+    margin-left: 25px; /* Increased indentation */
+    padding-left: 5px;
+    line-height: 1.7; /* Good for list readability */
+}
+
+.result-data p li {
+    margin-bottom: 8px; /* More space between list items */
+}
+
+/* Loader Animation */
+.loader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* More gap */
+}
+
+.loader hr {
+    border: none;
+    height: 22px; /* Taller loader bars */
+    /* Vibrant blue gradient for loader animation */
+    background: linear-gradient(90deg, #f0f6fc, #a7d9fc, #74b9f3);
+    background-size: 800px 50px;
+    border-radius: 15px; /* More rounded */
+    animation: loader 3s infinite linear;
+}
+
+@keyframes loader {
+    0% {
+        background-position: -800px 0;
+    }
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+/* Main Bottom (Search Box & Info) - Contains the Prompt Bar */
 .main-bottom {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     max-width: 900px;
-    padding: 0px 20px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent padding */
+    position: sticky; /* Keeps it at the bottom of the viewport as content scrolls */
+    bottom: 0;
+    /* Light gradient background for the bottom bar area */
+    background: linear-gradient(to top, #eaf4ff, #ffffff);
+    padding-top: 20px; /* More space above search box */
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.08); /* Stronger shadow to lift it */
+    border-top-left-radius: 20px; /* More rounded top corners */
+    border-top-right-radius: 20px;
+    z-index: 5; /* Ensure it's above other content but below nav/sidebar if sticky */
 }
 
 .search-box {
@@ -86,110 +243,186 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #f0f4f9;
-    padding: 10px 20px;
-    border-radius: 50px;
-}
-
-.search-box img {
-    width: 24px;
-    cursor: pointer;
+    background-color: #ffffff; /* White background for the prompt bar itself */
+    padding: 12px 25px; /* More padding */
+    border-radius: 60px; /* Very rounded, pill-like shape */
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border: 1px solid #e0e0e0; /* Subtle border */
 }
 
 .search-box input {
     flex: 1;
-    background: transparent;
     border: none;
     outline: none;
-    padding: 8px;
-    font-size: 18px;   
+    background: transparent;
+    padding: 10px 0;
+    font-size: 17px; /* Slightly larger text */
+    color: #333;
 }
 
-.search-box div {
+.search-box input::placeholder {
+    color: #999; /* Softer placeholder color */
+}
+
+.search-box div { /* Targeting the div containing icons */
     display: flex;
+    gap: 18px; /* More gap between icons */
     align-items: center;
-    gap: 15px;
 }
 
-.main .bottom-info {
+.search-box img { /* Target all images inside search-box's icon div */
+    width: 28px; /* Larger icons */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, filter 0.3s ease;
+}
+
+.search-box img:hover {
+    transform: scale(1.15);
+    filter: brightness(0.8); /* Slightly dim on hover */
+}
+
+/* Specific styling for the send icon - making it colorful */
+.search-box img[src*="send_icon"] { /* More specific selector for send icon */
+    width: 32px; /* Even larger for send */
+    /* Applying a blue tint filter for a colorful look */
+    filter: invert(30%) sepia(90%) saturate(1500%) hue-rotate(200deg) brightness(100%) contrast(90%);
+}
+
+.search-box img[src*="send_icon"]:hover {
+    /* More vibrant blue on hover */
+    filter: invert(30%) sepia(90%) saturate(1800%) hue-rotate(200deg) brightness(90%) contrast(90%);
+}
+
+
+.bottom-info {
     font-size: 13px;
-    margin: 15px auto;
+    color: #888; /* Slightly lighter gray */
     text-align: center;
-    font-weight: 300;
+    margin-top: 20px; /* More space */
+    padding-bottom: 15px;
+    line-height: 1.6;
 }
 
-.result{
-    padding: 0px 5%;
-    max-height: 70vh;
-    overflow-y: scroll;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.result::-webkit-scrollbar {
-    display: none;
-}
-
-.result-title {
-    margin: 40px 0px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.result img {
-    width: 40px;
-    border-radius: 50%;
-}
-
-.result-data {
-    display: flex;
-    align-items: start;
-    gap: 20px;
-}
-
-.loader {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.loader hr {
-    border-radius: 4px;
-    border: none;
-    background-color: #f6f7f8;
-    background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
-    background-size: 800px 50px;
-    height: 20px;
-    animation: loader 3s infinite linear;
-}
-
-@keyframes loader {
-    0%{
-        background-position: -800px 0px;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .nav {
+        padding: 15px 25px;
+        font-size: 20px;
     }
-    100%{
-        background-position: 800px 0px;
-    }
-}
 
-.result-data p {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.8;
-}
+    .nav img {
+        width: 40px;
+    }
 
-@media (max-width:600px) {
-    .main-bottom input {
-        flex: none;
-        width: 150px;
+    .greet {
+        font-size: 45px;
+        margin: 40px 0 30px;
     }
-    .main-bottom img {
-        width: 20px;
+
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
     }
+
+    .card {
+        padding: 15px;
+        min-height: 120px;
+        border-radius: 12px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .card img {
+        width: 30px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .result-title {
+        margin: 30px 0;
+    }
+
+    .result-title p {
+        font-size: 17px;
+    }
+
+    .result-data p {
+        font-size: 15px;
+    }
+
     .search-box {
-        padding: 5px 10px;
+        padding: 10px 20px;
     }
-    .search-box div {
-        gap: 5px;
+
+    .search-box input {
+        font-size: 16px;
+    }
+
+    .search-box img { /* Apply to all icons */
+        width: 25px;
+    }
+
+    .search-box img[src*="send_icon"] { /* Specific for send icon */
+        width: 28px;
+    }
+
+    .bottom-info {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 0 15px;
+    }
+
+    .nav {
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+
+    .greet {
+        font-size: 35px;
+        margin: 30px 0 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+        gap: 15px;
+    }
+
+    .card {
+        min-height: 100px;
+    }
+
+    .search-box {
+        flex-direction: column; /* Stack input and icons vertically */
+        align-items: stretch;
+        padding: 15px;
+        border-radius: 25px;
+    }
+
+    .search-box input {
+        text-align: center; /* Center input text when stacked */
+        margin-bottom: 12px;
+    }
+
+    .search-box div { /* Target the icon container */
+        justify-content: center; /* Center icons horizontally */
+        width: 100%;
+        gap: 20px; /* Slightly more space between icons when stacked */
+    }
+
+    .bottom-info {
+        font-size: 11px;
     }
 }

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import './Main.css'
+import './Main.css' // This CSS will make it beautiful and colorful
 import { assets } from '../../assets/assets'
 import { Context } from '../../context/Context'
 
@@ -9,7 +9,7 @@ const Main = () => {
     const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context)
 
   return (
-    <div className='main'>  
+    <div className='main'>
       <div className='nav'>
         <p>Gemini</p>
         <img src={assets.user_icon} alt="" />
@@ -28,11 +28,11 @@ const Main = () => {
                 <img src={assets.compass_icon} alt="" />
             </div>
             <div className="card">
-                <p>Briefly summerize this concept: urban planning</p>
+                <p>Briefly summarize this concept: urban planning</p>
                 <img src={assets.bulb_icon} alt="" />
             </div>
             <div className="card">
-                <p>Brainstrom team bonding activities for our work retreat</p>
+                <p>Brainstorm team bonding activities for our work retreat</p>
                 <img src={assets.message_icon} alt="" />
             </div>
             <div className="card">
@@ -56,7 +56,7 @@ const Main = () => {
             </div>
             :<p dangerouslySetInnerHTML={{__html:resultData}}></p>
             }
-    
+         
           </div>
         </div>
         }
@@ -72,7 +72,7 @@ const Main = () => {
                 </div>
             </div>
             <p className="bottom-info">
-                Gemiini may display inaccurate info, including about people, so double-click its responses. Your privacy and Gemini Apps
+                Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps
             </p>
         </div>
 
