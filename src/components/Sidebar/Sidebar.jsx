@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import './Sidebar.css' // This will be our new Sidebar.css for the gradient theme
+import './Sidebar.css'
 import {assets} from '../../assets/assets'
 import { Context } from '../../context/Context'
 

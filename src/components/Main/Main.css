@@ -80,7 +80,7 @@ body {
 /* Cards Section */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly wider cards */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly wider cards, responsive grid */
     gap: 20px; /* More space between cards */
     padding: 0 10px;
     margin-bottom: 50px;
@@ -137,7 +137,7 @@ body {
     padding: 0 10px;
     animation: fadeIn 1s ease-in-out;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* Enables scrolling for long results */
     max-height: calc(100vh - 280px); /* Adjusted for larger header/footer, ensures scrollability */
     padding-right: 10px; /* Ensure space for scrollbar */
 }
@@ -366,7 +366,7 @@ body {
         font-size: 16px;
     }
 
-    .search-box img { /* Apply to all icons */
+    .search-box div img { /* Apply to all icons within search-box's div */
         width: 25px;
     }
 
@@ -396,7 +396,7 @@ body {
     }
 
     .cards {
-        grid-template-columns: 1fr; /* Stack cards vertically */
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
         gap: 15px;
     }
 

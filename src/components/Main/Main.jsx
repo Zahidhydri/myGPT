@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import './Main.css' // This CSS will make it beautiful and colorful
+import './Main.css' // This CSS makes it beautiful, colorful, and responsive
 import { assets } from '../../assets/assets'
 import { Context } from '../../context/Context'
 
