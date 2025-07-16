@@ -151,9 +151,9 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 100px) {
+@media (max-width: 768px) {
     .sidebar {
-        width: 100%; /* Full width on smaller screens */
+        width: 20%; /* Full width on smaller screens */
         min-height: auto;
         height: 60px; /* Fixed height for top bar */
         padding: 15px 10px;
