@@ -14,10 +14,4 @@ The **Gemini** app is a cutting-edge AI application powered by Google's Gemini A
 - Gemini API: Backend API provided by Gemini for accessing exchange functionalities.
 - CSS: styling languages for designing the user interface.
 
-## 🚦Getting Started
-1. Clone the repository to your local machine.
-
-    ```bash
-   git clone https://github.com/vaibhavdhok/Gemini-C.git
-
   **Feel free to explore, modify, and enhance this project further!**
